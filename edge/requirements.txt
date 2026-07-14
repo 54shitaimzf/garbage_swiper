@@ -1,0 +1,4 @@
+# The Jetson already contains these packages in the host Python environment.
+# Keep this list for CI smoke checks; do not install a second Torch/TensorRT stack.
+ultralytics
+opencv-python

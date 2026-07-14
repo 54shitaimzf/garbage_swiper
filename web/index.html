@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#101820"><link rel="manifest" href="/manifest.json"><link rel="stylesheet" href="/style.css"><title>园区巡检小车</title></head><body>
+<main class="page"><header><h1>园区巡检小车</h1><span id="state" class="pill offline">未连接</span></header>
+<section class="card connection"><label>Jetson 地址<input id="host" inputmode="decimal" value=""></label><label>网关端口<input id="port" inputmode="numeric" value="8080"></label><button id="connect">连接</button></section>
+<section class="card safety"><div><b>手动控制模式</b><span>松手、断线或 1 秒无指令自动刹停</span></div><label class="speed">限速 <output id="speedValue">30</output>%<input id="speed" type="range" min="5" max="60" value="30"></label></section>
+<section class="card control"><div class="joystick" id="joystick"><div class="knob" id="knob"></div></div><div class="hint">拖动摇杆：前后 / 横移；按钮：旋转</div><div class="buttons"><button data-direction="5">左转</button><button data-direction="1">前进</button><button data-direction="6">右转</button><button data-direction="3">左移</button><button id="stop" class="danger">急停</button><button data-direction="4">右移</button><button></button><button data-direction="2">后退</button><button></button></div></section>
+<section class="card ai"><div class="row"><b>AI 识别结果</b><button id="refreshAi">刷新</button></div><img id="aiImage" alt="最近一次 YOLO 结果" src="/artifacts/yolo_result.jpg"><pre id="aiText">尚未读取结果</pre></section>
+<p class="foot">首次使用：手机连接与 Jetson 同一热点，访问本页地址；车轮悬空后再测试。</p></main><script src="/app.js"></script></body></html>

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "engine_file": "best.engine",
+  "engine_sha256": "RUN_ON_JETSON: sha256sum ~/icar_models/best.engine",
+  "input": {
+    "binding": "images",
+    "layout": "NCHW",
+    "dtype": "float32",
+    "width": 640,
+    "height": 640,
+    "color_order": "RGB",
+    "resize_mode": "letterbox"
+  },
+  "outputs": {
+    "count": "NEED_INSPECT",
+    "boxes": "NEED_INSPECT",
+    "scores": "NEED_INSPECT",
+    "classes": "NEED_INSPECT"
+  },
+  "decoder": {
+    "format": "efficient_nms",
+    "box_format": "xyxy",
+    "boxes_normalized": false
+  },
+  "labels": [
+    "drink_white",
+    "drink_red",
+    "drink_green",
+    "backpack",
+    "tea_box"
+  ],
+  "confidence_threshold": 0.5,
+  "validation": {
+    "image_file": "validation/foreign-object.jpg",
+    "image_sha256": "待填",
+    "expected_class": "drink_red",
+    "minimum_score": 0.5,
+    "expected_box_xyxy": [100, 80, 420, 360],
+    "minimum_iou": 0.5
+  },
+  "_meta": {
+    "source_data_yaml": "dataset/yolo/data.yaml",
+    "train_names": {
+      "0": "drink_white",
+      "1": "drink_red",
+      "2": "drink_green",
+      "3": "backpack",
+      "4": "tea_box"
+    },
+    "note": "labels 已按训练顺序固化。engine_sha256 / outputs.* / validation 必须在 Jetson 上用 generate_model_manifest.py 补齐。当前 Ultralytics 默认导出可能不含 EfficientNMS，需 nms=True 重导。"
+  }
+}

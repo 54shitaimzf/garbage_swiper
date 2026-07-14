@@ -1,0 +1,16 @@
+{
+  "patrol_lab": {
+    "name": "实验室短巡检（待现场标定）",
+    "map": "lab",
+    "enabled": false,
+    "description": "现场确认起点和安全目标点后启用",
+    "waypoints": []
+  },
+  "patrol_yahboomcar": {
+    "name": "Yahboom 短巡检（待现场标定）",
+    "map": "yahboomcar",
+    "enabled": false,
+    "description": "现场确认起点和安全目标点后启用",
+    "waypoints": []
+  }
+}

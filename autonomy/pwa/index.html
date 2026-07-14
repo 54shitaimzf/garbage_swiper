@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/style.css">
+  <title>iCar 自主任务</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ADDITIVE AUTONOMY · 8082</p>
+        <h1>自主任务控制台</h1>
+        <p class="subline">已有地图优先，旧手动控制入口保持在 8081</p>
+      </div>
+      <span id="connectionBadge" class="badge badge-warn">连接检查中</span>
+    </header>
+
+    <section id="notice" class="notice">
+      当前为模拟模式：所有按钮只验证 APP 与任务状态机，不会发送底盘指令。
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <div class="card-title"><span>① 选择地图</span><span id="mapHint" class="muted">加载中</span></div>
+        <div id="mapList" class="choice-list"></div>
+      </article>
+      <article class="card">
+        <div class="card-title"><span>② 选择路线</span><span id="routeHint" class="muted">加载中</span></div>
+        <div id="routeList" class="choice-list"></div>
+      </article>
+    </section>
+
+    <section class="card mission-card">
+      <div class="card-title"><span>③ 任务控制</span><span id="stateBadge" class="badge badge-neutral">空闲</span></div>
+      <div class="status-grid">
+        <div><span class="muted">当前地图</span><strong id="selectedMap">—</strong></div>
+        <div><span class="muted">当前路线</span><strong id="selectedRoute">—</strong></div>
+        <div><span class="muted">适配器</span><strong id="adapterStatus">—</strong></div>
+        <div><span class="muted">旧链路</span><strong class="ok-text">8081 保持独立</strong></div>
+      </div>
+      <div class="actions primary-actions">
+        <button id="activateBtn" class="btn btn-primary">进入自主模式</button>
+        <button id="startBtn" class="btn btn-success" disabled>启动路线</button>
+        <button id="stopBtn" class="btn btn-danger" disabled>停止任务</button>
+        <button id="homeBtn" class="btn btn-ghost" disabled>回到起点</button>
+        <button id="deactivateBtn" class="btn btn-ghost">退出自主模式</button>
+      </div>
+      <p id="errorText" class="error-text" hidden></p>
+    </section>
+
+    <section class="card">
+      <div class="card-title"><span>可选：APP 建图</span><span class="muted">先确认雷达和里程计稳定</span></div>
+      <div class="mapping-row">
+        <button id="mappingStartBtn" class="btn btn-ghost">开始建图</button>
+        <button id="mappingStopBtn" class="btn btn-ghost" disabled>停止建图</button>
+        <input id="mappingName" type="text" placeholder="新地图名称" maxlength="32" autocomplete="off">
+        <button id="mappingSaveBtn" class="btn btn-ghost" disabled>保存地图</button>
+      </div>
+      <p id="mappingStatus" class="muted">建图流程尚未启动</p>
+    </section>
+
+    <footer><a href="http://10.71.253.19:8081/">返回现有手动控制（8081）</a><span>安全提示：首次自主导航只使用短路线并保持急停可用。</span></footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

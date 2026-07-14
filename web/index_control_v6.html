@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小车控制台</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <div class="row between"><h1>小车控制台</h1><span id="connectionState" class="status offline">连接中</span></div>
+      <div class="row controls"><label for="host">地址</label><input id="host" value="" autocomplete="off" spellcheck="false"><label for="port">端口</label><input id="port" value="8081" inputmode="numeric"><button id="connectButton" type="button">连接</button></div>
+      <p id="backendState" class="hint">正在连接控制服务…</p>
+    </section>
+    <section class="card camera-card">
+      <div class="row between"><h2>实时车载画面</h2><button id="refreshCamera" type="button">刷新画面</button></div>
+      <img id="liveCamera" class="camera" src="/camera.mjpeg" alt="小车实时画面">
+      <p class="hint">低帧率预览（约 5 FPS）。</p>
+    </section>
+    <section class="card control-card">
+      <h2>运动控制</h2>
+      <div class="drive-grid">
+        <button class="drive-button" data-action="forward" type="button">前进</button><button class="drive-button" data-action="left_rotate" type="button">左旋</button><button class="drive-button stop-button" data-action="stop" type="button">停止</button><button class="drive-button" data-action="right_rotate" type="button">右旋</button><button class="drive-button" data-action="back" type="button">后退</button><button class="drive-button" data-action="left" type="button">左移</button><button class="drive-button" data-action="right" type="button">右移</button>
+      </div>
+      <div class="joystick-wrap"><div id="joystick" class="joystick" aria-label="移动摇杆"><div id="joystickKnob" class="joystick-knob"></div></div><p class="hint">按住并拖动摇杆控制平移；松手自动停止。</p></div>
+      <div class="speed-row"><label for="speed">速度 <span id="speedValue">30</span>%</label><input id="speed" type="range" min="5" max="100" value="30" step="1"></div>
+    </section>
+    <section class="card"><div class="row between"><h2>AI 识别</h2><span id="yoloState" class="hint">等待数据</span></div><pre id="yoloResult">暂无识别结果</pre></section>
+  </main>
+  <script src="/app_control_v6.js"></script>
+</body>
+</html>

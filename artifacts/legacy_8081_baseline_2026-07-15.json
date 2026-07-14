@@ -1,0 +1,25 @@
+{
+  "scope": "legacy 8081 manual chain",
+  "timestamp": "2026-07-15",
+  "host": "10.71.253.19",
+  "automated_read_only": {
+    "status": "pass",
+    "yolo_latest": "pass",
+    "ports_before_and_after_8082": [6000, 8081, 8082]
+  },
+  "manual_supervised_checks": {
+    "motion_and_joystick": "pending现场观察",
+    "speed_and_stop": "pending现场观察",
+    "video_and_websocket": "pending浏览器观察",
+    "buzzer_and_reconnect": "pending现场观察"
+  },
+  "legacy_remote_sha256": {
+    "jetson/web_control_gateway_buzzer.py": "0bb9b8a2e85602fa1a701db9267aced7399b9a479f33bfd4c44a94e468839821",
+    "web/index.html": "fcb2de28037bb3cb486ba2a0f6107f6b6a9b72d9637e0121965d10cd47fb76e0",
+    "web/app_control_v8.js": "c12d720f5a2c13ccd1d94f63c1f061751f57e74d4e1a611fcc7d7c0a7faf6700",
+    "web/style_control_v7.css": "987885fc1fd797aa3ec8839dec1efa91e6ad3b7542963005f0fe16d4eedaa0be",
+    "web/app_alert_controls_buzzer.js": "7da72a3677e56ff534b01ac2e9c4cfb2649e14d245b089e34e5cfca311f5204b",
+    "web/style_alert_controls.css": "f34cca50ec50043f184927f91978cf438323a5ee2c179f266d921a27cef0eda4"
+  },
+  "note": "只读接口和端口已自动验证；运动、视频显示、WebSocket、蜂鸣器和断线重连仍需用户现场监督确认，不能由无头检查伪造通过。"
+}

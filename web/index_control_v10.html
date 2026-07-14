@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小车控制台</title>
+  <link rel="stylesheet" href="/style_control_v7.css">
+  <link rel="stylesheet" href="/style_alert_controls.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar"><div class="brand"><div class="brand-mark">✦</div><div><h1>小车控制台</h1><p class="subtitle">原生底盘 · 实时视觉 · 安全控制</p></div></div><span id="connectionState" class="connection-chip offline">连接中</span></header>
+    <section class="card"><div class="section-heading"><div><h2>连接设置</h2><p class="hint">手机热点与小车在同一网络后使用</p></div><span id="backendState" class="backend-chip">等待控制端</span></div><div class="connection-grid"><div class="field"><label for="host">小车地址</label><input id="host" autocomplete="off" spellcheck="false"></div><div class="field"><label for="port">网页端口</label><input id="port" value="8081" inputmode="numeric" autocomplete="off"></div><button id="connectButton" class="primary-button" type="button">重新连接</button></div></section>
+    <div class="dashboard">
+      <section class="card camera-card"><div class="section-heading"><div><h2>实时车载画面</h2><p class="hint">低帧率预览，减小手机热点压力</p></div><span class="telemetry-chip">约 5 FPS</span></div><div class="camera-frame"><img id="liveCamera" src="/camera.mjpeg" alt="小车实时画面"><span class="camera-badge">LIVE</span></div><div class="camera-actions"><span id="cameraState" class="hint">正在读取视频流…</span><button id="refreshCamera" class="ghost-button" type="button">刷新画面</button></div></section>
+      <section class="card control-card"><div class="section-heading"><div><h2>运动控制</h2><p class="hint">按钮与摇杆均为按住控制，松手停车</p></div><span id="motionState" class="telemetry-chip">待机</span></div><div class="control-layout"><div class="joystick-box"><div id="joystick" class="joystick" aria-label="移动摇杆" role="application"><div id="joystickKnob" class="joystick-knob"></div></div><p id="joystickCaption" class="joystick-caption">拖动摇杆开始移动</p><div class="telemetry"><span id="axisX" class="telemetry-chip">X 0</span><span id="axisY" class="telemetry-chip">Y 0</span><span id="axisMode" class="telemetry-chip">摇杆待机</span></div></div><div><div class="direction-pad"><span></span><button class="drive-button" data-action="forward" type="button">▲ 前进</button><span></span><button class="drive-button" data-action="left" type="button">◀ 左移</button><button class="drive-button stop-button" data-action="stop" type="button">■ 停止</button><button class="drive-button" data-action="right" type="button">右移 ▶</button><span></span><button class="drive-button" data-action="back" type="button">▼ 后退</button><span></span><button class="drive-button" data-action="left_rotate" type="button">↺ 左旋</button><span></span><button class="drive-button" data-action="right_rotate" type="button">右旋 ↻</button></div><div class="speed-panel"><div class="speed-line"><label for="speed">运动速度</label><span class="speed-value"><span id="speedValue">30</span>%</span></div><input id="speed" type="range" min="5" max="100" value="30" step="1"></div></div></div></section>
+    </div>
+    <section class="card ai-card"><div class="section-heading"><div><h2>AI 识别</h2><p class="hint">best.engine 最新识别结果</p></div><span id="yoloState" class="telemetry-chip">等待数据</span></div><pre id="yoloResult">暂无识别结果</pre></section>
+    <p class="footer-note">安全保护：控制连接中断或超过约 1.2 秒没有运动指令时，小车会自动停止。</p>
+  </div>
+  <script src="/app_control_v8.js"></script>
+  <script src="/app_alert_controls_buzzer.js"></script>
+</body>
+</html>

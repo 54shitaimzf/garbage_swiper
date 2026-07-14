@@ -1,0 +1,9 @@
+icar_sensor_health:
+  ros__parameters:
+    scan_topic: /scan
+    odom_topic: /odom
+    tf_topic: /tf
+    image_topic: /camera/color/image_raw
+    depth_topic: /camera/depth/image_raw
+    timeout_sec: 3.0
+    require_depth: true

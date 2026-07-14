@@ -1,0 +1,52 @@
+name: autonomy-additive-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python-additive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile additive Python code
+        run: python -m compileall -q autonomy cloud ros2_ws/src/icar_autonomy scripts tests
+      - name: Run additive unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Run additive protocol golden checks
+        run: python scripts/verify_protocol_additive.py
+      - name: Check PWA entrypoints
+        run: python - <<'PY'
+          from pathlib import Path
+          root = Path("autonomy/pwa")
+          required = ["index.html", "app.js", "style.css", "manifest.webmanifest"]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              raise SystemExit(f"missing PWA files: {missing}")
+          print("PWA static check: PASS")
+          PY
+
+  ros2-source-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate ROS2 package metadata and source syntax
+        run: |
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          package = Path("ros2_ws/src/icar_autonomy/package.xml")
+          ET.parse(package)
+          print("package.xml parse: PASS")
+          PY
+          python -m py_compile ros2_ws/src/icar_autonomy/icar_autonomy/sensor_health.py
+      - name: Report runtime compatibility honestly
+        run: |
+          if command -v ros2 >/dev/null 2>&1; then
+            echo "ROS2 available; a full colcon job can be enabled on a Foxy runner."
+          else
+            echo "ROS2 not installed on this runner; source validation completed only."
+          fi

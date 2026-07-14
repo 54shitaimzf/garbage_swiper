@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lab",
+    "name": "实验室地图",
+    "yaml": "/home/jetson/icar_maps/lab.yaml",
+    "pgm": "/home/jetson/icar_maps/lab.pgm",
+    "description": "车载已有实验室地图"
+  },
+  {
+    "id": "yahboomcar",
+    "name": "Yahboom 小车地图",
+    "yaml": "/home/jetson/icar_maps/yahboomcar.yaml",
+    "pgm": "/home/jetson/icar_maps/yahboomcar.pgm",
+    "description": "车载已有 Yahboom 地图"
+  }
+]

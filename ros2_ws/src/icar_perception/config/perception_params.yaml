@@ -1,0 +1,16 @@
+# 交给框架组（马展飞）嵌入 icar_bringup/config/perception_params.yaml
+# 字段名与《对接指南与提交自查.md》§3.5 一致
+perception_node:
+  ros__parameters:
+    use_sim_detection: false
+    model_path: "/root/models/yolo.engine"
+    confidence_threshold: 0.5
+    image_topic: "/image_raw"
+    detection_rate_hz: 10.0
+    input_size: 640
+    class_labels:
+      - drink_white
+      - drink_red
+      - drink_green
+      - backpack
+      - tea_box
