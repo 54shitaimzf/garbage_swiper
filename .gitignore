@@ -56,13 +56,8 @@ tmp/
 temp/
 jetson/*probe*
 
-# Generated verification media; keep JSON/Markdown reports
-artifacts/*.jpg
-artifacts/*.jpeg
-artifacts/*.png
-artifacts/*.mp4
-artifacts/*.avi
-artifacts/*.log
+# Generated artifacts; keep only intentionally curated deliverables
+artifacts/
 
 # Android and Gradle build output
 .gradle/
@@ -78,3 +73,25 @@ android/local.properties
 *.iml
 .DS_Store
 Thumbs.db
+
+# Course/reference material and working notes, not final delivery documents
+/2026-实训 - 1. 课程简介_检索副本.txt
+/2026实训 - 2. 最终答辩(2).pdf
+/智能小车使用手册(2)_检索副本.txt
+/reference/
+/jetson/_patch_probe.txt
+
+# Superseded root-level working documents. Canonical versions are in deliverables/Document.
+/00-项目叙事与定位.md
+/项目简介.md
+/小组成员分工.md
+/AUTONOMY_8082_GUIDE.md
+/BEST_ENGINE_RUNTIME.md
+/C_交付清单.md
+/CI.md
+/DEPLOY.md
+/Manifest交付说明.md
+/PWA_CONTROL_GUIDE.md
+/PWA_HOTSPOT_START.md
+/PWA_HOTSPOT_START_V2.md
+/PROJECT_LAYOUT.md
